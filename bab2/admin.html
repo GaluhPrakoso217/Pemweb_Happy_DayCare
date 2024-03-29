@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Daycare </title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <center>
+    <h2>Admin Daycare </h2>
+    <form id="adminForm">
+        <label for="name">Nama :</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <button type="submit" id="submitBtn">Tambahkan </button>
+    </form>
+    <br>
+    <table id="adminTable">
+        <thead>
+            <tr>
+                <th>Nama </th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data akan dimasukkan disini secara dinamis menggunakan JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById('adminForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            
+            if (name && email) {
+                addAdminData(name, email);
+                document.getElementById('adminForm').reset();
+            } else {
+                alert('Silakan masukkan nama dan email admin.');
+            }
+        });
+
+        function addAdminData(name, email) {
+            var table = document.getElementById('adminTable').getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow(table.rows.length);
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            cell1.innerHTML = name;
+            cell2.innerHTML = email;
+            cell3.innerHTML = '<button onclick="editRow(this)">Edit</button> <button onclick="deleteRow(this)">Delete</button>';
+        }
+
+        function editRow(button) {
+            var row = button.parentNode.parentNode;
+            var name = row.cells[0].innerHTML;
+            var email = row.cells[1].innerHTML;
+            document.getElementById('name').value = name;
+            document.getElementById('email').value = email;
+            row.remove();
+        }
+
+        function deleteRow(button) {
+            var row = button.parentNode.parentNode;
+            row.remove();
+        }
+    </script>
+    </center>
+</body>
+</html>
