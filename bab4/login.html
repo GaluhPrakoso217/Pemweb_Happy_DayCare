@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <center>
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="Logo.jpg" alt="" width="200px" />
+                </div>
+            </nav>
+        </header>
+        <main>
+            <center>
+                <div class="login" id="loginDiv">
+                    <h1>Happy Day Care</h1>
+                    <h3>Login</h3>
+                    <input type="text" id="usernameInput" name="Username" placeholder="Username" />
+                    <input type="password" id="passwordInput" name="password" placeholder="Password" />
+                    <button type="button" onclick="login()">Login</button>
+                </div>
+                <p>
+                    <b>
+                        <a href="register.html">Register</a>
+                        <a href="tugas2.html">Home</a>
+                    </b>
+                </p>
+            </center>
+        </main>
+    </center>
+
+    <script>
+        function login() {
+            var username = document.getElementById("usernameInput").value;
+            var password = document.getElementById("passwordInput").value;
+            
+            // Contoh validasi sederhana, Anda dapat menggantinya dengan validasi sesuai kebutuhan
+            if (username === "admin" && password === "admin123") {
+                alert("Login berhasil!");
+                // Redirect ke halaman setelah login berhasil
+                window.location.href = "dashboard.html";
+            } else {
+                alert("Username atau password salah!");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Daycare </title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 2px solid #ddd;
+            padding: 20px;
+            z-index: 999;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <center>
+    <h2>Admin Daycare </h2>
+    <form id="adminForm">
+        <label for="name">Nama :</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <button type="submit" id="submitBtn">Tambahkan </button>
+    </form>
+    <br>
+    <table id="adminTable">
+        <thead>
+            <tr>
+                <th>Nama </th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+        
+        </tbody>
+    </table>
+    <div id="editPopup" class="popup">
+        <h2>Edit Admin</h2>
+        <label for="editName">Nama:</label>
+        <input type="text" id="editName" required><br><br>
+        <label for="editEmail">Email:</label>
+        <input type="email" id="editEmail" required><br><br>
+        <button onclick="saveEdit()">Simpan</button>
+        <button onclick="closePopup()">Batal</button>
+    </div>
+
+    <!-- Pop-up untuk penghapusan -->
+    <div id="deletePopup" class="popup">
+        <h2>Hapus Admin</h2>
+        <p>Anda yakin ingin menghapus admin ini?</p>
+        <button onclick="confirmDelete()">Ya</button>
+        <button onclick="closePopup()">Batal</button>
+    </div>
+
+    <!-- Overlay untuk menghalangi interaksi dengan latar belakang -->
+    <div id="overlay" class="overlay"></div>
+
+    <script src="popup.js">
+    </script>
+    
+    </center>
+</body>
+</html>
